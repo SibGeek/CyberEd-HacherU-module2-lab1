@@ -2,13 +2,13 @@
 Лабораторная работа по реализации кластера серверов Ubuntu с помощью Vagrant и их конфигурированию с помощью Ansible.
 
 **Полезные команды:**
-- ```vagrant box add _$box-file_ --name _$box-name_```
+- ```vagrant box add $box-file --name $box-name```
 - ```vagrant init```
 - ```vagrant box list```
 - ```vagrant up```
 - ```vagrant status```
 - ```vagrant destroy```
-- ```vagrant ssh _$vm-name_```
-- ```ansible -i _$inventory-file_ _$main-file_ -m ping```
-- ```ansible-vault create _$encrypted-credentials-file_```
-- ```ansible-playbook -i _$inventory-file_ _$main-file_ -D --ask-vault-pass --extra-vars '@_$encrypted-credentials-file_'```
+- ```vagrant ssh $vm-name```
+- ```ansible -i $inventory-file $main-file -m ping```
+- ```ansible-vault create $encrypted-credentials-file```
+- ```ansible-playbook -i $inventory-file $main-file -D --ask-vault-pass --extra-vars '@$encrypted-credentials-file'```
