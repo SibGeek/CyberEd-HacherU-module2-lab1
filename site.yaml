@@ -1,0 +1,7 @@
+---
+  - name: Ansible_labs_playbook
+    hosts: all
+    become: true
+    gather_facts: no
+    roles:
+      - Hosts_with_OS_hardering

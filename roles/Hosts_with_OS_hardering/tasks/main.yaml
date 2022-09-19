@@ -1,0 +1,81 @@
+---
+  - name: Disable debug-shell SystemD Service
+    ansible.builtin.systemd:
+      name: debug-shell
+      enabled: 0
+
+  - name: Disable Ctrl-Alt-Del Reboot Activation
+    ansible.builtin.file:
+      src: /dev/null
+      dest: /etc/systemd/system/ctrl-alt-del.target
+      state: link
+
+  - name: Disable Ctrl-Alt-Del Burst Action
+    ansible.builtin.lineinfile:
+      path: /etc/systemd/system.conf
+      regexp: '^\#?CtrlAltDelBurstAction\='
+      line: CtrlAltDelBurstAction=none
+
+  - name: Ensure Home Directories are Created for New Users
+    ansible.builtin.lineinfile:
+      path: /etc/login.defs
+      regexp: '^\#?CREATE_HOME'
+      line: CREATE_HOME yes
+
+  - name: Set Password Hashing Algorithm in /etc/login.defs
+    ansible.builtin.lineinfile:
+      path: /etc/login.defs
+      regexp: '^\#?ENCRYPT_METHOD'
+      line: ENCRYPT_METHOD SHA512
+
+  - name: Ensure All Accounts on the System Have Unique Names
+    debug:
+      msg: "Testing Ensure All Accounts on the System Have Unique Names"
+
+  - name: Set Account Expiration Following Inactivity
+    debug:
+      msg: "Testing Set Account Expiration Following Inactivity"
+
+  - name: Prevent Login to Accounts With Empty Password
+    debug:
+      msg: "Testing Prevent Login to Accounts With Empty Password"
+
+  - name: Verify All Account Password Hashes are Shadowed
+    debug:
+      msg: "Testing Verify All Account Password Hashes are Shadowed"
+
+  - name: Set Password Minimum Length in login.defs
+    debug:
+      msg: "Testing Set Password Minimum Length in login.defs"
+
+  - name: Set Password Minimum Length in login.defs
+    debug:
+      msg: "Testing Set Password Minimum Length in login.defs"
+
+  - name: Modify the System Message of the Day Banner
+    debug:
+      msg: "Testing Modify the System Message of the Day Banner"
+
+  - name: Verify /boot/grub2/grub.cfg Permissions
+    debug:
+      msg: "Testing Verify /boot/grub2/grub.cfg Permissions"
+
+  - name: Disallow kernel profiling by unprivileged users
+    debug:
+      msg: "Testing Disallow kernel profiling by unprivileged users"
+
+  - name: Disable vsyscalls
+    debug:
+      msg: "Testing Disable vsyscalls"
+
+  - name: Disable Kernel Image Loading
+    debug:
+      msg: "Testing Disable Kernel Image Loading"
+
+  - name: Harden the operation of the BPF just-in-time compiler
+    debug:
+      msg: "Testing Harden the operation of the BPF just-in-time compiler"
+
+  - name: Restrict Access to Kernel Message Buffer
+    debug:
+      msg: "Testing Restrict Access to Kernel Message Buffer"
